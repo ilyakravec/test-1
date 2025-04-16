@@ -1,2 +1,0 @@
-Fancybox.bind("[data-fancybox]", {
-});
