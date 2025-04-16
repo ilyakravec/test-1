@@ -1,0 +1,478 @@
+// intro
+
+
+.intro {
+	background-color: var(--hero-bg);
+	position: relative;
+
+	&__wrapper {
+		height: 100vh;
+		padding-top: 108px;
+	}
+
+	&__inner {
+		max-width: 783px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		padding-block: $lg;
+	}
+
+	&__title {
+		font-family: 'prata', sans-serif;
+		font-size: 60px;
+		line-height: 1.2;
+	}
+
+	&__subtitle {
+		margin-top: $lg;
+		font-size: 40px;
+		line-height: 1.2;
+		max-width: 620px;
+		font-weight: 400;
+	}
+
+	&__benefits {
+		margin-top: $xl;
+
+		&-item {
+			font-size: $md;
+			position: relative;
+			padding-left: 60px;
+			line-height: 1.1;
+
+			background-color: rgba(#282829, .7);
+			border-radius: 4px;
+
+			display: inline-block;
+
+			&:not(:first-child) {
+				margin-top: 38px;
+			}
+
+			&::after {
+				display: block;
+				content: '';
+
+				background: url('/assets/images/svg/checkmark.svg') center no-repeat;
+				background-size: cover;
+
+				width: 39px;
+				height: 37px;
+
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: 0;
+
+				margin: auto;
+				z-index: 1;
+			}
+
+			span {
+				font-family: 'prata', sans-serif;
+				font-size: 40px;
+			}
+		}
+	}
+
+	&__btn {
+		background-color: #fff;
+		font-weight: 700;
+
+		display: inline-block;
+		text-transform: uppercase;
+		padding: 40px 50px;
+
+		font-size: $md;
+		color: var(--main-bg);
+
+		max-width: 191px;
+		margin-top: 40px;
+
+		border-radius: 4px;
+		text-align: center;
+	}
+
+	&__bg {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+
+		z-index: 1;
+
+		width: 39.739583333333336vw;
+		height: 100%;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+
+@media screen and (max-width:1550px) {
+
+
+	.intro__title {
+		font-size: 50px;
+	}
+
+	.intro__subtitle {
+		margin-top: 40px;
+		font-size: 30px;
+	}
+
+	.intro__benefits {
+		margin-top: 54px;
+	}
+}
+
+@media screen and (max-width:1350px) {
+
+
+	.intro__wrapper {
+		display: flex;
+		column-gap: 32px;
+	}
+
+	.intro__bg {
+		position: unset;
+		width: 100%;
+	}
+
+	.intro__title {
+		font-size: 46px;
+	}
+
+	.intro__subtitle {
+		margin-top: 24px;
+		font-size: 28px;
+	}
+
+	.intro__benefits {
+		margin-top: 44px;
+	}
+
+	.intro__inner {
+		justify-content: flex-start;
+	}
+
+	.intro__benefits {
+		margin-top: 24px;
+	}
+
+	.intro__benefits-item:not(:first-child) {
+		margin-top: 24px;
+	}
+
+	.intro__btn {
+		margin-top: 18px;
+		padding: 24px 40px;
+	}
+
+	.intro__bg {
+		height: unset;
+	}
+
+	.intro__benefits-item span {
+		font-size: 26px;
+	}
+}
+
+@media screen and (max-width:976px) {
+	.intro__wrapper {
+		height: unset;
+	}
+
+	.intro__wrapper {
+		flex-direction: column;
+	}
+
+	.intro__inner {
+		max-width: unset;
+		padding-bottom: 25px;
+	}
+
+	.intro__bg {
+		padding-bottom: 25px;
+	}
+
+	.intro__subtitle {
+		max-width: unset;
+	}
+}
+
+// intro
+// advantages
+.advantages {
+	&__inner {
+		display: grid;
+		grid-template: auto / repeat(3, 1fr);
+		column-gap: 50px;
+	}
+
+	&__img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+
+		}
+	}
+
+	&__list {
+		padding-top: 53px;
+
+		&-item {
+			padding-left: 78px;
+			font-size: $md;
+			position: relative;
+			padding-bottom: 40px;
+			border-bottom: 1px solid #55565A;
+
+			&:not(:first-child) {
+				padding-top: 40px;
+			}
+
+			&::before {
+				content: '';
+				display: block;
+				background: url('/assets/images/svg/advantage-img.svg') 50% 50% no-repeat;
+				background-size: cover;
+
+				width: 58px;
+				height: 47px;
+
+				position: absolute;
+				left: 0;
+			}
+		}
+	}
+
+	&__btn {
+		width: 100%;
+		background-color: #fff;
+		font-weight: 700;
+
+		display: inline-block;
+		text-transform: uppercase;
+		padding: 32px 50px;
+
+		font-size: $md;
+		color: var(--main-bg);
+
+		margin-top: 80px;
+
+		border-radius: 4px;
+		text-align: center;
+	}
+}
+
+
+@media screen and (max-width:1350px) {
+	.advantages__inner {
+		column-gap: 24px;
+	}
+
+	.advantages__img img {
+		height: 80%;
+	}
+
+	.advantages__list-item {
+		font-size: 18px;
+	}
+}
+
+
+@media screen and (max-width:976px) {
+
+	.advantages__inner {
+		grid-template: 1fr / 1fr;
+		padding: 0 15px;
+		row-gap: $md;
+	}
+
+	.advantages__img img {
+		height: 100%;
+	}
+
+	.advantages__img {
+		height: 650px;
+	}
+}
+
+@media screen and (max-width:576px) {
+
+	.advantages__img {
+		height: 500px;
+	}
+
+	.advantages__btn {
+		margin-top: 50px;
+		padding: 24px 30px;
+	}
+
+	.advantages__list {
+		padding-top: 30px;
+
+		&-item {
+			padding-bottom: 30px;
+		}
+	}
+}
+
+// advantages
+
+// contact
+
+.contact {
+
+	&__title {
+		font-size: 54px;
+		font-family: "prata", sans-serif;
+	}
+
+	&__inner {
+		border: 1px solid #D5C9BE;
+		border-radius: 30px;
+		background-color: #FFFFFF;
+		padding: 73px 0 73px 134px;
+		color: #38535D;
+
+		position: relative;
+
+		&-wrapper {
+			width: 55%;
+		}
+	}
+
+	&__form {
+		margin-top: 45px;
+	}
+
+	&__field {
+		width: 100%;
+		padding: 14px 38px;
+
+		border-radius: 4px;
+		border: 2px solid #D6D6D6;
+
+		font-size: 24px;
+
+		&:not(:first-child) {
+			margin-top: 13px;
+		}
+
+		&::placeholder {
+			color: #55565A;
+		}
+
+		&.accent {
+			border: 2px solid #D5C9BE;
+		}
+
+	}
+
+	&__img {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+
+		z-index: 1;
+		height: 100%;
+		width: 38%;
+		margin: auto;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+
+			border-radius: 30px;
+		}
+	}
+
+	&__checkbox {
+		margin-top: 26px;
+	}
+
+	&__btn {
+		width: 100%;
+		background-color: var(--main-bg);
+		text-transform: uppercase;
+		color: var(--white);
+		font-size: $md;
+		font-weight: 400;
+		padding: 32px 50px;
+
+		border: 0px;
+		margin-top: 26px;
+		line-height: 1.5;
+		border-radius: 4px;
+	}
+}
+
+// contact
+
+@media screen and (max-width:1300px) {
+	.contact__inner {
+		padding: 40px 30px;
+	}
+}
+
+
+@media screen and (max-width:700px) {
+	.contact__img {
+		display: none;
+	}
+
+	.contact__inner-wrapper {
+		width: 100%;
+	}
+}
+
+// navbar
+
+.navbar {
+	&__inner {
+		border-top: 2px solid #D5C9BE;
+		border-bottom: 2px solid #D5C9BE;
+		padding: 40px 0;
+		display: flex;
+		column-gap: 60px;
+		row-gap: $md;
+		justify-content: center;
+
+		font-size: 20px;
+		text-transform: uppercase;
+		font-style: italic;
+	}
+}
+
+// navbar
+
+@media screen and (max-width:576px) {
+	.navbar {
+		&__inner {
+			flex-wrap: wrap;
+		}
+	}
+
+	.contact__btn {
+		font-size: 14px;
+	}
+
+	.contact__title {
+		font-size: 32px;
+	}
+}

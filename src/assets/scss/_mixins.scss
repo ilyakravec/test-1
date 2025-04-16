@@ -1,0 +1,126 @@
+@use 'sass:math';
+
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+@mixin font-face(
+  $name,
+  $path,
+  $weight: null,
+  $style: null,
+  $exts: eot woff2 woff ttf svg
+) {
+  $src: null;
+
+  $extmods: (
+    eot: '?',
+    svg: '#' + str-replace($name, ' ', '_'),
+  );
+
+  $formats: (
+    otf: 'opentype',
+    ttf: 'truetype',
+  );
+
+  @each $ext in $exts {
+    $extmod: if(
+      map-has-key($extmods, $ext),
+      $ext + map-get($extmods, $ext),
+      $ext
+    );
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append(
+      $src,
+      url(quote($path + '.' + $extmod)) format(quote($format)),
+      comma
+    );
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-weight: $weight;
+    font-style: $style;
+
+    // font-display: block;
+    src: $src;
+  }
+}
+
+@mixin media($minmax, $media) {
+  @each $size, $resolution in $sizes {
+    @if $media==$size {
+      @media only screen and (#{$minmax}-width: $resolution) {
+        @content;
+      }
+    }
+  }
+}
+
+$maxWidth: 1920;
+$maxWidthContainer: 1200;
+
+@mixin adaptive-value($property, $startSize, $minSize, $type) {
+  $addSize: $startSize - $minSize;
+
+  @if $type==1 {
+    //Только если меньше контейнера
+    #{$property}: $startSize + px;
+
+    @media (max-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(
+        #{$minSize + px} + #{$addSize} *
+          ((100vw - 400px) / #{$maxWidthContainer - 400})
+      );
+    }
+  } @else if $type==2 {
+    //Только если больше контейнера
+    #{$property}: $startSize + px;
+
+    @media (min-width: #{$maxWidthContainer + px}) {
+      #{$property}: calc(
+        #{$minSize + px} + #{$addSize} * ((100vw - 400px) / #{$maxWidth - 400})
+      );
+    }
+  } @else {
+    //Всегда
+    #{$property}: calc(
+      #{$minSize + px} + #{$addSize} * ((100vw - 400px) / #{$maxWidth - 400})
+    );
+  }
+}
+
+@function vmax($pixels, $context: $fullSize) {
+  @return #{($pixels/$context) * 100}vmax;
+}
+
+@function vw($pixels, $context: $fullSize) {
+  //@return #{($pixels/$context) * 100}vw;
+  @return #{calc($pixels/$context) * 100}vw;
+}
+
+@function vh($pixels, $context: $fullSize) {
+  //@return #{(($pixels/$context) * 100) * 2}vh;
+  @return #{calc(($pixels/$context) * 100) * 2}vh;
+}
+
+@function em($pixels, $context: $mainFontSizeWithPx) {
+  //@return #{$pixels/$context}em;
+  @return #{calc($pixels/$context)}em;
+}
+
+@function rem($pixels, $context: $mainFontSizeWithPx) {
+  //@return #{$pixels/$context}rem;
+  @return #{calc($pixels/$context)}rem;
+}

@@ -1,0 +1,32 @@
+$fullSize: 1920;
+$maxWidthContainer: 1240;
+$minWidth: 320px;
+$maxWidth: 1920;
+$transSpeed: 0.4s;
+
+$fontFamily: 'arial';
+$mainFontSizeWithPx: 16;
+$mainFontSize: $mainFontSizeWithPx + px;
+$mainLineHeight: 1.55;
+
+$sizes: (
+	'md1': 567px,
+	'md2': 769px,
+	'md3': 1024px,
+	'md4': 1280px,
+	'md5': 1600px,
+	'md6': $maxWidthContainer + 20px,
+);
+
+$sm: 16px;
+$sm-x: 12px;
+$sm-2x: 8px;
+$md: 24px;
+$lg: 50px;
+$xl: 64px;
+
+:root {
+	--white: #fff;
+	--hero-bg: #222222;
+	--main-bg: #282829;
+}
